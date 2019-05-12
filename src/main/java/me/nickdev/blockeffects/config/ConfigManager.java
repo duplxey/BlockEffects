@@ -11,7 +11,6 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class ConfigManager  {
     
@@ -20,7 +19,7 @@ public class ConfigManager  {
     private ArrayList<World> enabledWorlds = new ArrayList<>();
     private boolean security;
     private boolean permission;
-    private int securityTime;
+    private int securityCooldown;
 
     public ConfigManager(BlockEffects blockEffects) {
         FileConfiguration config = blockEffects.getConfig();
@@ -31,7 +30,7 @@ public class ConfigManager  {
         }
         security = config.getBoolean("security.enabled");
         permission = config.getBoolean("no-permission.send");
-        securityTime = config.getInt("security.cooldown") * 20;
+        securityCooldown = config.getInt("security.cooldown") * 20;
     }
 
     public EBlock getEBlock( String name) {
@@ -64,7 +63,7 @@ public class ConfigManager  {
         return permission;
     }
 
-    public int getSecurityTime() {
-        return securityTime;
+    public int getSecurityCooldown() {
+        return securityCooldown;
     }
 }

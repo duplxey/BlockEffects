@@ -128,7 +128,7 @@ public class EBlock  {
         return new String[] {
                 CC.NORMAL + "Name: " + CC.VALUE + name,
                 CC.NORMAL + "Block: " + CC.VALUE + material.toString(),
-                CC.NORMAL + "Effect: " + CC.VALUE + (potionEffect == null ? "none" : potionEffect.getType().getName() + CC.NORMAL + "(dur: " + CC.VALUE + potionEffect.getDuration() + CC.NORMAL + ", amp: " + CC.VALUE + potionEffect.getAmplifier() + CC.NORMAL + ")"),
+                CC.NORMAL + "Effect: " + CC.VALUE + (potionEffect == null ? "none" : potionEffect.getType().getName() + CC.NORMAL + " (dur: " + CC.VALUE + potionEffect.getDuration() + CC.NORMAL + ", amp: " + CC.VALUE + potionEffect.getAmplifier() + CC.NORMAL + ")"),
                 CC.NORMAL + "Message: " + CC.VALUE + (message == null ? "none" : message),
                 CC.NORMAL + "Permission: " + CC.VALUE + (permission == null ? "none" : permission),
         };

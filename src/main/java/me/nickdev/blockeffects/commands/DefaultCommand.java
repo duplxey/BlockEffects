@@ -23,30 +23,31 @@ public class DefaultCommand implements CommandExecutor {
     }
 
     public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
-        if (args.length != 1) {
-            sender.sendMessage(P.PREFIX + ChatColor.RED + O.WRONG_SYNTAX.getText());
-            return true;
-        }
-        if (args[0].equalsIgnoreCase("help")) {
+        if (args.length == 0) {
             sendHelp(sender);
             return true;
         }
-        if (!args[0].equalsIgnoreCase("blocks")) {
-            sender.sendMessage(P.PREFIX + ChatColor.RED + O.UNKNOWN_ARGS.getText());
-            return true;
-        }
-        if (!sender.hasPermission("blockeffects.blocks")) {
-            sender.sendMessage(P.PREFIX + O.NO_PERMISSION.getText());
-            return true;
-        }
-        sender.sendMessage(P.PREFIX + ChatColor.GRAY + "Registered Blocks");
-        for (EBlock block : blockManager.getEBlocks()) {
-            sender.sendMessage("----------------");
-            for (String line : block.info()) {
-                sender.sendMessage(ChatColor.GRAY + StringManager.color(line));
+        if (args.length == 1) {
+            if (args[0].equalsIgnoreCase("help")) {
+                sendHelp(sender);
+                return true;
+            }
+            if (args[0].equalsIgnoreCase("blocks")) {
+                if (!sender.hasPermission("blockeffects.blocks")) {
+                    sender.sendMessage(P.PREFIX + O.NO_PERMISSION.getText());
+                    return true;
+                }
+                sender.sendMessage(P.PREFIX + ChatColor.GRAY + "The following blocks are registered:");
+                for (EBlock block : blockManager.getEBlocks()) {
+                    sender.sendMessage("----------------");
+                    for (String line : block.info()) {
+                        sender.sendMessage(ChatColor.GRAY + StringManager.color(line));
+                    }
+                }
+                return true;
             }
         }
-        sendHelp(sender);
+        sender.sendMessage(P.PREFIX + O.WRONG_SYNTAX.getText());
         return true;
     }
 
