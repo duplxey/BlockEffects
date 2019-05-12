@@ -1,0 +1,76 @@
+#  ____  _            _    ______  __  __          _              __   ___
+# |  _ \| |          | |  |  ____|/ _|/ _|        | |            /_ | |__ \
+# | |_) | | ___   ___| | _| |__  | |_| |_ ___  ___| |_ ___  __   _| |    ) |
+# |  _ <| |/ _ \ / __| |/ /  __| |  _|  _/ _ \/ __| __/ __| \ \ / / |   / /
+# | |_) | | (_) | (__|   <| |____| | | ||  __/ (__| |_\__ \  \ V /| |_ / /_
+# |____/|_|\___/ \___|_|\_\______|_| |_| \___|\___|\__|___/   \_/ |_(_)____|
+#              Get a potion effect when you step on a block!
+#                          Coded by NickDEV
+#
+# ==========================================================================
+#                              Template
+# ==========================================================================
+# Copy the following template and fill in the data in order to create a new
+# block.
+#
+# <name> - custom name (doesn't affect anything in game)
+# <material> - block material (Material: http://tinyurl.com/spigot-material)
+# <message> - custom message sent to the player
+# <permission> - allows only the player's with the given permission to use the block
+# <potion-effect> - potion effect type (http://tinyurl.com/spigot-potioneffect)
+# <potion-duration> - time in seconds
+# <potion-amplifier> - potion amplifier
+#
+#  <name>:
+#    material: <material>
+#    message: <message>
+#    permission: <permission>
+#    effect:
+#      type: <potion-effect>
+#      duration: <potion-duration>
+#      amplifier: <potion-amplifier>
+#    commands:
+#      - "<command1>"
+#      - "<command2>"
+#      - "<command3>"
+
+blocks:
+  example-block:
+    material: RED_WOOL
+    effect:
+      type: REGENERATION
+      duration: 25
+      amplifier: 2
+  coal-block:
+    material: COAL_BLOCK
+    message: "&cYou are now blind! :o"
+    effect:
+      type: BLINDNESS
+      duration: 10
+      amplifier: 1
+    commands:
+      - "say %player% has stepped on a coal_block,"
+      - "say he is now blind!"
+
+# ==========================================================================
+#                              Security
+# ==========================================================================
+# Highly recommended to be enabled if you don't want to get spammed with
+# effects & messages.
+#
+# enabled - boolean that enables/disables the security
+# cooldown - cooldown when you step on a block (all-blocks)
+security:
+  enabled: true
+  cooldown: 1
+
+# Sends a message if player tries to use a block he doesn't have permission for.
+no-permission:
+  send: true
+
+# ==========================================================================
+#                              World
+# ==========================================================================
+# List of the worlds in which the BlockEffects are going to work.
+enabled-worlds:
+  - "world"

@@ -1,0 +1,14 @@
+name: ${project.name}
+main: ${project.groupId}.${project.artifactId}.${project.name}
+version: ${project.version}
+api-version: 1.13
+author: NickDEV
+commands:
+  blockeffects:
+    usage: /<command>
+    description: Default plugin command.
+    aliases: [be]
+permissions:
+  blockeffects.blocks:
+    default: op
+    description: Allows you to see the registered blocks.
