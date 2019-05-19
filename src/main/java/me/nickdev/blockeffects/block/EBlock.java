@@ -14,6 +14,7 @@ public class EBlock  {
     // Required data
     private String name;
     private Material material;
+    private TriggerType triggerType;
 
     // Optional data
     private PotionEffect potionEffect;
@@ -31,9 +32,10 @@ public class EBlock  {
      * @param permission  Permission
      * @param commands  List of commands
      */
-    public EBlock(String name, Material material, PotionEffect potionEffect, String message, String permission, List<String> commands) {
+    public EBlock(String name, Material material, TriggerType triggerType, PotionEffect potionEffect, String message, String permission, List<String> commands) {
         this.name = name;
         this.material = material;
+        this.triggerType = triggerType;
         this.potionEffect = potionEffect;
         this.message = message;
         this.permission = permission;
@@ -47,7 +49,7 @@ public class EBlock  {
      * @param material  Material
      */
     public EBlock(String name, Material material) {
-        this(name, material, null, null, null, null);
+        this(name, material, null, null, null, null, null);
     }
 
     /**
@@ -77,6 +79,10 @@ public class EBlock  {
 
     public Material getMaterial() {
         return material;
+    }
+
+    public TriggerType getTriggerType() {
+        return triggerType;
     }
 
     public PotionEffect getPotionEffect() {
@@ -128,6 +134,7 @@ public class EBlock  {
         return new String[] {
                 CC.NORMAL + "Name: " + CC.VALUE + name,
                 CC.NORMAL + "Block: " + CC.VALUE + material.toString(),
+                CC.NORMAL + "Trigger: " + CC.VALUE + (triggerType == null ? "none" : triggerType),
                 CC.NORMAL + "Effect: " + CC.VALUE + (potionEffect == null ? "none" : potionEffect.getType().getName() + CC.NORMAL + " (dur: " + CC.VALUE + potionEffect.getDuration() + CC.NORMAL + ", amp: " + CC.VALUE + potionEffect.getAmplifier() + CC.NORMAL + ")"),
                 CC.NORMAL + "Message: " + CC.VALUE + (message == null ? "none" : message),
                 CC.NORMAL + "Permission: " + CC.VALUE + (permission == null ? "none" : permission),

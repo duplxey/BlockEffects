@@ -2,6 +2,7 @@ package me.nickdev.blockeffects.config;
 
 import me.nickdev.blockeffects.BlockEffects;
 import me.nickdev.blockeffects.block.EBlock;
+import me.nickdev.blockeffects.block.TriggerType;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.World;
@@ -36,6 +37,7 @@ public class ConfigManager  {
         return new EBlock(
                 name,
                 Material.valueOf(blockSection.getString(name + ".material")),
+                TriggerType.valueOf(blockSection.getString(name + ".trigger")),
                 getPotionEffect(name),
                 blockSection.getString(name + ".message"),
                 blockSection.getString(name + ".permission"),

@@ -16,6 +16,7 @@
 # <name> - custom name (doesn't affect anything in game)
 # <material> - block material (Material: http://tinyurl.com/spigot-material)
 # <message> - custom message sent to the player
+# <trigger-type> - when the block is triggered (WALK, LEFT_CLICK, RIGHT_CLICK)
 # <permission> - allows only the player's with the given permission to use the block
 # <potion-effect> - potion effect type (http://tinyurl.com/spigot-potioneffect)
 # <potion-duration> - time in seconds
@@ -24,6 +25,7 @@
 #  <name>:
 #    material: <material>
 #    message: <message>
+#    trigger: <trigger-type>
 #    permission: <permission>
 #    effect:
 #      type: <potion-effect>
@@ -36,14 +38,18 @@
 
 blocks:
   example-block:
-    material: RED_WOOL
+    material: REDSTONE_BLOCK
+    trigger: RIGHT_CLICK
+    message: "&6[BlockEffects] &cRegenerating your health!"
     effect:
       type: REGENERATION
       duration: 25
       amplifier: 2
+    permission: blockeffects.redstone_block
   coal-block:
     material: COAL_BLOCK
-    message: "&cYou are now blind! :o"
+    trigger: WALK
+    message: "&6[BlockEffects] &7You are now blind!"
     effect:
       type: BLINDNESS
       duration: 10

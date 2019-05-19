@@ -3,6 +3,7 @@ package me.nickdev.blockeffects.listeners;
 import me.nickdev.blockeffects.BlockEffects;
 import me.nickdev.blockeffects.block.EBlock;
 import me.nickdev.blockeffects.block.EBlockManager;
+import me.nickdev.blockeffects.block.TriggerType;
 import me.nickdev.blockeffects.config.ConfigManager;
 import me.nickdev.blockeffects.constants.O;
 import me.nickdev.blockeffects.constants.P;
@@ -33,7 +34,13 @@ public class PlayerMoveListener implements ListenerComponent {
         if (!configManager.getEnabledWorlds().contains(player.getWorld()) || ItemManager.isNull(block) || !blockManager.containsEBlock(block.getType())) return;
         if (blockManager.getCooldown().hasCooldown(player)) return;
 
+        // Add the cooldown to the player
+        if (configManager.isSecurityEnabled()) {
+            blockManager.getCooldown().addCooldown(player);
+        }
+
         EBlock eblock = blockManager.getEBlock(block.getType());
+        if (eblock.getTriggerType() != TriggerType.WALK) return;
 
         if (eblock.getPermission() != null && !player.hasPermission(eblock.getPermission()) && configManager.isNoPermissionEnabled()) {
             player.sendMessage(P.PREFIX + ChatColor.RED + O.NO_PERMISSION.getText());
@@ -41,10 +48,5 @@ public class PlayerMoveListener implements ListenerComponent {
         }
 
         eblock.activate(player);
-
-        // Add the cooldown to the player
-        if (configManager.isSecurityEnabled()) {
-            blockManager.getCooldown().addCooldown(player);
-        }
     }
 }

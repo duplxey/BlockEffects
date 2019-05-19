@@ -8,6 +8,6 @@ public class RegisterListeners {
 
     public RegisterListeners(BlockEffects blockEffects, EBlockManager blockManager, ConfigManager configManager) {
         new PlayerMoveListener(blockEffects, blockManager, configManager);
-        new PlayerInteractListener();
+        new PlayerInteractListener(blockEffects, blockManager, configManager);
     }
 }
