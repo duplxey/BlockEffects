@@ -42,14 +42,14 @@ public class PlayerInteractListener implements ListenerComponent {
         }
 
         EBlock eblock = blockManager.getEBlock(block.getType());
-        if (eblock.getTriggerType() == TriggerType.RIGHT_CLICK && event.getAction() != Action.RIGHT_CLICK_BLOCK) return;
-        if (eblock.getTriggerType() == TriggerType.LEFT_CLICK && event.getAction() != Action.LEFT_CLICK_BLOCK) return;
+        if (event.getAction() == Action.RIGHT_CLICK_BLOCK && eblock.getTriggerType() == TriggerType.RIGHT_CLICK
+            || event.getAction() == Action.LEFT_CLICK_BLOCK && eblock.getTriggerType() == TriggerType.LEFT_CLICK) {
+            if (eblock.getPermission() != null && !player.hasPermission(eblock.getPermission()) && configManager.isNoPermissionEnabled()) {
+                player.sendMessage(P.PREFIX + ChatColor.RED + O.NO_PERMISSION.getText());
+                return;
+            }
 
-        if (eblock.getPermission() != null && !player.hasPermission(eblock.getPermission()) && configManager.isNoPermissionEnabled()) {
-            player.sendMessage(P.PREFIX + ChatColor.RED + O.NO_PERMISSION.getText());
-            return;
+            eblock.activate(player);
         }
-
-        eblock.activate(player);
     }
 }

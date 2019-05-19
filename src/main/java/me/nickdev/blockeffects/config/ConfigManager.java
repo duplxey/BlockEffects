@@ -36,7 +36,7 @@ public class ConfigManager  {
     public EBlock getEBlock(String name) {
         return new EBlock(
                 name,
-                Material.valueOf(blockSection.getString(name + ".material")),
+                Material.valueOf(blockSection.getString(name + ".material").replaceAll("[^A-Z_]", "")),
                 TriggerType.valueOf(blockSection.getString(name + ".trigger", "WALK")),
                 getPotionEffect(name),
                 blockSection.getString(name + ".message"),
