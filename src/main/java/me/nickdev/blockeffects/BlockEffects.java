@@ -36,4 +36,8 @@ public class BlockEffects extends JavaPlugin {
     public String getVersion() {
         return version;
     }
+
+    public static boolean isRunningIncompatableBukkit() {
+        return !Bukkit.getVersion().contains("1.13");
+    }
 }
