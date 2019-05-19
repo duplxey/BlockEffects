@@ -44,6 +44,7 @@ public class DefaultCommand implements CommandExecutor {
                         sender.sendMessage(ChatColor.GRAY + StringManager.color(line));
                     }
                 }
+                sender.sendMessage("----------------");
                 return true;
             }
         }

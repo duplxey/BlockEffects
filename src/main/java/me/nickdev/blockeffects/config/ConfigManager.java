@@ -24,27 +24,34 @@ public class ConfigManager  {
     public ConfigManager(BlockEffects blockEffects) {
         FileConfiguration config = blockEffects.getConfig();
         blockSection = config.getConfigurationSection("blocks");
-
         for (String worldName : config.getStringList("enabled-worlds")) {
             enabledWorlds.add(Bukkit.getWorld(worldName));
         }
         security = config.getBoolean("security.enabled");
         permission = config.getBoolean("no-permission.send");
-        securityCooldown = config.getInt("security.cooldown") * 20;
+        securityCooldown = config.getInt("security.cooldown");
     }
 
-    public EBlock getEBlock( String name) {
-         return new EBlock(
-                 name,
-                 Material.valueOf(blockSection.getString(name + ".material")),
-                 new PotionEffect(
-                         PotionEffectType.getByName(blockSection.getString(name + ".effect.type")),
-                         blockSection.getInt(name + ".effect.duration"),
-                         blockSection.getInt(name + ".effect.amplifier")
-                 ),
-                 blockSection.getString(name + ".message"),
-                 blockSection.getString(name + ".permission"),
-                 blockSection.getStringList(name + ".commands"));
+    public EBlock getEBlock(String name) {
+        return new EBlock(
+                name,
+                Material.valueOf(blockSection.getString(name + ".material")),
+                getPotionEffect(name),
+                blockSection.getString(name + ".message"),
+                blockSection.getString(name + ".permission"),
+                blockSection.getStringList(name + ".commands"));
+    }
+
+    private PotionEffect getPotionEffect(String name) {
+        String potionEffectTypeString = blockSection.getString(name + ".effect.type");
+        if (potionEffectTypeString == null) return null;
+        PotionEffectType potionEffectType =  PotionEffectType.getByName(potionEffectTypeString);
+        if (potionEffectType == null) return null;
+        return new PotionEffect(
+                potionEffectType,
+                blockSection.getInt(name + ".effect.duration")*20,
+                blockSection.getInt(name + ".effect.amplifier")
+        );
     }
 
     public ConfigurationSection getBlockSection() {
