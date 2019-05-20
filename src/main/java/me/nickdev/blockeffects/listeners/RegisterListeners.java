@@ -9,5 +9,7 @@ public class RegisterListeners {
     public RegisterListeners(BlockEffects blockEffects, EBlockManager blockManager, ConfigManager configManager) {
         new PlayerMoveListener(blockEffects, blockManager, configManager);
         new PlayerInteractListener(blockEffects, blockManager, configManager);
+        new PlayerBlockBreakListener(blockEffects, blockManager, configManager);
+        new PlayerBlockPlaceListener(blockEffects, blockManager, configManager);
     }
 }
