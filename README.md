@@ -1,5 +1,5 @@
 # BlockEffects
-Activate special effects when players interact or step on the block.
+Activate special effects on block events!
 
 Download the plugin on SpigotMC:
 https://www.spigotmc.org/resources/blockeffects.21788/
