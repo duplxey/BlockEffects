@@ -53,7 +53,7 @@ public class EBlock  {
     }
 
     /**
-     * Activates the block.
+     * Activates the block (potion effect, message, commands).
      *
      * @param player  Player
      */
@@ -139,5 +139,18 @@ public class EBlock  {
                 CC.NORMAL + "Message: " + CC.VALUE + (message == null ? "none" : message),
                 CC.NORMAL + "Permission: " + CC.VALUE + (permission == null ? "none" : permission),
         };
+    }
+
+    @Override
+    public String toString() {
+        return "EBlock{" +
+                "name='" + name + '\'' +
+                ", material=" + material +
+                ", triggerType=" + triggerType +
+                ", potionEffect=" + potionEffect +
+                ", message='" + message + '\'' +
+                ", permission='" + permission + '\'' +
+                ", commands=" + commands +
+                '}';
     }
 }

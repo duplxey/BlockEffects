@@ -26,7 +26,7 @@ public class PlayerBlockBreakListener implements ListenerComponent {
         Player player = event.getPlayer();
         Block block = event.getBlock();
 
-        if (!configManager.getEnabledWorlds().contains(player.getWorld()) || !blockManager.containsEBlock(block.getType())) return;
+        if (!configManager.getEnabledWorlds().contains(player.getWorld()) || !blockManager.isEBlock(block.getType())) return;
         blockManager.tryToActivate(player, event.getBlock().getType(), TriggerType.BREAK);
     }
 }

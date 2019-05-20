@@ -29,7 +29,7 @@ public class PlayerInteractListener implements ListenerComponent {
         Block block = event.getClickedBlock();
 
         if (block == null) return;
-        if (!configManager.getEnabledWorlds().contains(player.getWorld()) || ItemManager.isNull(block) || !blockManager.containsEBlock(block.getType())) return;
+        if (!configManager.getEnabledWorlds().contains(player.getWorld()) || ItemManager.isNull(block) || !blockManager.isEBlock(block.getType())) return;
         if (event.getAction() == Action.LEFT_CLICK_BLOCK) {
             blockManager.tryToActivate(player, block.getType(), TriggerType.LEFT_CLICK);
         } else if (event.getAction() == Action.RIGHT_CLICK_BLOCK) {

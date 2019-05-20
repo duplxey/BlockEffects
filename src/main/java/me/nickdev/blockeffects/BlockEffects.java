@@ -9,16 +9,23 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class BlockEffects extends JavaPlugin {
 
+    private static BlockEffects instance;
     private String version = getDescription().getVersion();
 
+    private ConfigManager configManager;
+    private EBlockManager blockManager;
+
     public void onEnable() {
-        print("Preparing the config files.");
+        instance = this;
+
+        Bukkit.getLogger().info("Preparing the configuration files.");
         saveDefaultConfig();
 
-        ConfigManager configManager = new ConfigManager(this);
-        EBlockManager blockManager = new EBlockManager(configManager);
+        // Managers
+        configManager = new ConfigManager(this);
+        blockManager = new EBlockManager(configManager);
 
-        print("Registering commands & listeners.");
+        Bukkit.getLogger().info("Registering commands & listeners.");
         new RegisterCommands(this, blockManager);
         new RegisterListeners(this, blockManager, configManager);
 
@@ -26,18 +33,24 @@ public class BlockEffects extends JavaPlugin {
     }
 
     public void onDisable() {
-        Bukkit.getLogger().info("[BlockEffects] BlockEffects v" + version + " has been disabled.");
-    }
+        instance = null;
 
-    public static void print(String message) {
-        System.out.println("[BlockEffects] " + message);
+        Bukkit.getLogger().info("[BlockEffects] BlockEffects v" + version + " has been disabled.");
     }
 
     public String getVersion() {
         return version;
     }
 
-    public static boolean isRunningIncompatableBukkit() {
-        return !Bukkit.getVersion().contains("1.13");
+    public static BlockEffects getInstance() {
+        return instance;
+    }
+
+    public ConfigManager getConfigManager() {
+        return configManager;
+    }
+
+    public EBlockManager getBlockManager() {
+        return blockManager;
     }
 }

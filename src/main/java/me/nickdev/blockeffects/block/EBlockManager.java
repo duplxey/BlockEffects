@@ -28,6 +28,14 @@ public class EBlockManager {
         cooldown.setCooldownTime(configManager.getSecurityCooldown());
     }
 
+    /**
+     * Activates the EBlock if the block is eblock, player has no cooldown, right trigger is used.
+     *
+     * @param player  Player
+     * @param type  Type (Material of the block)
+     * @param triggerType  TriggerType
+     * @return  Returns true if the block has been activated.
+     */
     public boolean tryToActivate(Player player, Material type, TriggerType triggerType) {
         if (cooldown.hasCooldown(player)) return false;
         if (configManager.isSecurityEnabled()) {
@@ -43,11 +51,15 @@ public class EBlockManager {
         return true;
     }
 
-    private void registerEBlock(EBlock eBlock) {
+    public void registerEBlock(EBlock eBlock) {
         eBlocks.put(eBlock.getMaterial(), eBlock);
     }
 
-    public boolean containsEBlock(Material material) {
+    public void unregisterEBlock(Material material) {
+        eBlocks.remove(material);
+    }
+
+    public boolean isEBlock(Material material) {
         return eBlocks.keySet().contains(material);
     }
 

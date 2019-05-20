@@ -27,8 +27,7 @@ public class PlayerMoveListener implements ListenerComponent {
         Player player = event.getPlayer();
         Block block = player.getLocation().subtract(0.0, 1.0, 0.0).getBlock();
 
-        if (!configManager.getEnabledWorlds().contains(player.getWorld()) || ItemManager.isNull(block) || !blockManager.containsEBlock(block.getType())) return;
-
+        if (!configManager.getEnabledWorlds().contains(player.getWorld()) || ItemManager.isNull(block) || !blockManager.isEBlock(block.getType())) return;
         blockManager.tryToActivate(player, block.getType(), TriggerType.WALK);
     }
 }
