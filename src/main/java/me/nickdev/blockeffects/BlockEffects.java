@@ -23,7 +23,7 @@ public class BlockEffects extends JavaPlugin {
 
         // Managers
         configManager = new ConfigManager(this);
-        blockManager = new EBlockManager(configManager);
+        blockManager = new EBlockManager(this, configManager);
 
         Bukkit.getLogger().info("Registering commands & listeners.");
         new RegisterCommands(this, blockManager);

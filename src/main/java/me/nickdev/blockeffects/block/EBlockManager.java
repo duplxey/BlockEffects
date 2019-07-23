@@ -1,5 +1,6 @@
 package me.nickdev.blockeffects.block;
 
+import me.nickdev.blockeffects.BlockEffects;
 import me.nickdev.blockeffects.config.ConfigManager;
 import me.nickdev.blockeffects.constants.O;
 import me.nickdev.blockeffects.constants.P;
@@ -7,18 +8,23 @@ import me.nickdev.blockeffects.util.Cooldown;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.Collection;
 import java.util.HashMap;
 
 public class EBlockManager {
 
+    private BlockEffects blockEffects;
     private ConfigManager configManager;
 
     private HashMap<Material, EBlock> eBlocks = new HashMap<>();
     private Cooldown<Player> cooldown = new Cooldown<>();
+    private HashMap<Player, Collection<PotionEffect>> playerPotionStorage = new HashMap<>();
 
-    public EBlockManager(ConfigManager configManager) {
+    public EBlockManager(BlockEffects blockEffects, ConfigManager configManager) {
+        this.blockEffects = blockEffects;
         this.configManager = configManager;
 
         // Loads all the EBlocks
@@ -46,6 +52,21 @@ public class EBlockManager {
         if (eblock.getPermission() != null && !player.hasPermission(eblock.getPermission()) && configManager.isNoPermissionEnabled()) {
             player.sendMessage(P.PREFIX + ChatColor.RED + O.NO_PERMISSION.getText());
             return false;
+        }
+        // Store the potion effects and add them back to the player when EBlock effect is over
+        if (eblock.getPotionEffect() != null) {
+            playerPotionStorage.put(player, player.getActivePotionEffects());
+
+            new BukkitRunnable() {
+
+                @Override
+                public void run() {
+                    for (PotionEffect potionEffect : playerPotionStorage.get(player)) {
+                        player.addPotionEffect(potionEffect);
+                    }
+                }
+
+            }.runTaskLater(blockEffects, eblock.getPotionEffect().getDuration());
         }
         eblock.activate(player);
         return true;
