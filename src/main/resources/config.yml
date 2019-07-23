@@ -16,7 +16,7 @@
 # <name> - custom name (doesn't affect anything in game)
 # <material> - block material (Material: http://tinyurl.com/spigot-material)
 # <message> - custom message sent to the player
-# <trigger-type> - when the block is triggered (WALK, LEFT_CLICK, RIGHT_CLICK)
+# <trigger-type> - when the block is triggered (WALK, LEFT_CLICK, RIGHT_CLICK, BREAK, PLACE)
 # <permission> - allows only the player's with the given permission to use the block
 # <potion-effect> - potion effect type (http://tinyurl.com/spigot-potioneffect)
 # <potion-duration> - time in seconds
