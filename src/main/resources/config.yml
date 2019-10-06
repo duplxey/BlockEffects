@@ -4,19 +4,20 @@
 # |  _ <| |/ _ \ / __| |/ /  __| |  _|  _/ _ \/ __| __/ __| \ \ / / |   / /
 # | |_) | | (_) | (__|   <| |____| | | ||  __/ (__| |_\__ \  \ V /| |_ / /_
 # |____/|_|\___/ \___|_|\_\______|_| |_| \___|\___|\__|___/   \_/ |_(_)____|
-#              Get a potion effect when you step on a block!
-#                          Coded by NickDEV
+#               Activate special effects on block events!
+#                         Coded by NickDEV
 #
 # ==========================================================================
 #                              Template
 # ==========================================================================
 # Copy the following template and fill in the data in order to create a new
-# block.
+# EBlock. Each block needs to have the fields tagged with '*'. The other ones
+# are optional.
 #
-# <name> - custom name (doesn't affect anything in game)
-# <material> - block material (Material: http://tinyurl.com/spigot-material)
+# <name>* - custom name (doesn't affect anything in game)
+# <material>* - block material (Material: http://tinyurl.com/spigot-material)
+# <trigger-type>* - when the block is triggered (WALK, LEFT_CLICK, RIGHT_CLICK, BREAK, PLACE)
 # <message> - custom message sent to the player
-# <trigger-type> - when the block is triggered (WALK, LEFT_CLICK, RIGHT_CLICK, BREAK, PLACE)
 # <permission> - allows only the player's with the given permission to use the block
 # <potion-effect> - potion effect type (http://tinyurl.com/spigot-potioneffect)
 # <potion-duration> - time in seconds
@@ -24,8 +25,8 @@
 #
 #  <name>:
 #    material: <material>
-#    message: <message>
 #    trigger: <trigger-type>
+#    message: <message>
 #    permission: <permission>
 #    effect:
 #      type: <potion-effect>
@@ -36,8 +37,11 @@
 #      - "<command2>"
 #      - "<command3>"
 
+# ==========================================================================
+#                              EBlocks
+# ==========================================================================
 blocks:
-  example-block:
+  heal-block:
     material: REDSTONE_BLOCK
     trigger: RIGHT_CLICK
     message: "&6[BlockEffects] &cRegenerating your health!"
@@ -46,7 +50,7 @@ blocks:
       duration: 25
       amplifier: 2
     permission: blockeffects.redstone_block
-  coal-block:
+  blindness-block:
     material: COAL_BLOCK
     trigger: WALK
     message: "&6[BlockEffects] &7You are now blind!"
@@ -65,12 +69,13 @@ blocks:
 # effects & messages.
 #
 # enabled - boolean that enables/disables the security
-# cooldown - cooldown when you step on a block (all-blocks)
+# cooldown - cooldown time when you step on an EBlock
 security:
   enabled: true
   cooldown: 1
 
-# Sends a message if player tries to use a block he doesn't have permission for.
+# If enabled player will receive a message when he doesn't have the permission
+# to activate an EBlock.
 no-permission:
   send: true
 
