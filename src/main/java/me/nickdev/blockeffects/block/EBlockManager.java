@@ -27,15 +27,20 @@ public class EBlockManager {
         this.blockEffects = blockEffects;
         this.configManager = configManager;
 
+        load();
+
+        cooldown.setCooldownTime(configManager.getSecurityCooldownTime());
+    }
+
+    private void load() {
         // Loads all the EBlocks
         for (String blockName : configManager.getBlockSection().getKeys(false)) {
             registerEBlock(configManager.getEBlock(blockName));
         }
-        cooldown.setCooldownTime(configManager.getSecurityCooldown());
     }
 
     /**
-     * Activates the EBlock if the block is eblock, player has no cooldown, right trigger is used.
+     * Activates the EBlock if the block is an EBlock + player has no cooldown + right trigger is used.
      *
      * @param player  Player
      * @param type  Type (Material of the block)
@@ -49,8 +54,10 @@ public class EBlockManager {
         }
         EBlock eblock = getEBlock(type);
         if (eblock.getTriggerType() != triggerType) return false;
-        if (eblock.getPermission() != null && !player.hasPermission(eblock.getPermission()) && configManager.isNoPermissionEnabled()) {
-            player.sendMessage(P.PREFIX + ChatColor.RED + O.NO_PERMISSION.getText());
+        if (eblock.getPermission() != null && !player.hasPermission(eblock.getPermission())) {
+            if (configManager.isNoPermissionMessageEnabled()) {
+                player.sendMessage(P.PREFIX + ChatColor.RED + O.NO_PERMISSION.getText());
+            }
             return false;
         }
         // Store the potion effects and add them back to the player when EBlock effect is over
@@ -81,7 +88,7 @@ public class EBlockManager {
     }
 
     public boolean isEBlock(Material material) {
-        return eBlocks.keySet().contains(material);
+        return eBlocks.containsKey(material);
     }
 
     public EBlock getEBlock(Material material) {

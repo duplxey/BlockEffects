@@ -48,8 +48,8 @@ public class EBlock  {
      * @param name  Name
      * @param material  Material
      */
-    public EBlock(String name, Material material) {
-        this(name, material, null, null, null, null, null);
+    public EBlock(String name, Material material, TriggerType triggerType) {
+        this(name, material, triggerType, null, null, null, null);
     }
 
     /**

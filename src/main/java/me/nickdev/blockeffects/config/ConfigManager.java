@@ -18,9 +18,9 @@ public class ConfigManager  {
     private ConfigurationSection blockSection;
     
     private ArrayList<World> enabledWorlds = new ArrayList<>();
-    private boolean security;
-    private boolean permission;
-    private int securityCooldown;
+    private boolean isSecurityEnabled;
+    private boolean isNoPermissionMessageEnabled;
+    private int securityCooldownTime;
 
     public ConfigManager(BlockEffects blockEffects) {
         FileConfiguration config = blockEffects.getConfig();
@@ -28,9 +28,9 @@ public class ConfigManager  {
         for (String worldName : config.getStringList("enabled-worlds")) {
             enabledWorlds.add(Bukkit.getWorld(worldName));
         }
-        security = config.getBoolean("security.enabled");
-        permission = config.getBoolean("no-permission.send");
-        securityCooldown = config.getInt("security.cooldown");
+        isSecurityEnabled = config.getBoolean("security.enabled");
+        isNoPermissionMessageEnabled = config.getBoolean("no-permission.send");
+        securityCooldownTime = config.getInt("security.cooldown");
     }
 
     public EBlock getEBlock(String name) {
@@ -65,14 +65,14 @@ public class ConfigManager  {
     }
 
     public boolean isSecurityEnabled() {
-        return security;
+        return isSecurityEnabled;
     }
 
-    public boolean isNoPermissionEnabled() {
-        return permission;
+    public boolean isNoPermissionMessageEnabled() {
+        return isNoPermissionMessageEnabled;
     }
 
-    public int getSecurityCooldown() {
-        return securityCooldown;
+    public int getSecurityCooldownTime() {
+        return securityCooldownTime;
     }
 }
