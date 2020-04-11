@@ -1,10 +1,10 @@
-package me.nickdev.blockeffects.block;
+package com.duplxey.blockeffects.block;
 
-import me.nickdev.blockeffects.BlockEffects;
-import me.nickdev.blockeffects.config.ConfigManager;
-import me.nickdev.blockeffects.constants.O;
-import me.nickdev.blockeffects.constants.P;
-import me.nickdev.blockeffects.util.Cooldown;
+import com.duplxey.blockeffects.config.ConfigManager;
+import com.duplxey.blockeffects.constants.O;
+import com.duplxey.blockeffects.constants.P;
+import com.duplxey.blockeffects.BlockEffects;
+import com.duplxey.blockeffects.util.Cooldown;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;

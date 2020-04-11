@@ -1,4 +1,4 @@
-package me.nickdev.blockeffects.util;
+package com.duplxey.blockeffects.util;
 
 import org.bukkit.Material;
 import org.bukkit.block.Block;

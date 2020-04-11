@@ -1,8 +1,8 @@
-package me.nickdev.blockeffects.config;
+package com.duplxey.blockeffects.config;
 
-import me.nickdev.blockeffects.BlockEffects;
-import me.nickdev.blockeffects.block.EBlock;
-import me.nickdev.blockeffects.block.TriggerType;
+import com.duplxey.blockeffects.block.TriggerType;
+import com.duplxey.blockeffects.BlockEffects;
+import com.duplxey.blockeffects.block.EBlock;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.World;

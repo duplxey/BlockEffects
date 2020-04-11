@@ -1,12 +1,12 @@
-package me.nickdev.blockeffects.commands;
+package com.duplxey.blockeffects.commands;
 
-import me.nickdev.blockeffects.BlockEffects;
-import me.nickdev.blockeffects.block.EBlock;
-import me.nickdev.blockeffects.block.EBlockManager;
-import me.nickdev.blockeffects.constants.CC;
-import me.nickdev.blockeffects.constants.O;
-import me.nickdev.blockeffects.constants.P;
-import me.nickdev.blockeffects.util.StringManager;
+import com.duplxey.blockeffects.constants.CC;
+import com.duplxey.blockeffects.constants.O;
+import com.duplxey.blockeffects.constants.P;
+import com.duplxey.blockeffects.BlockEffects;
+import com.duplxey.blockeffects.block.EBlock;
+import com.duplxey.blockeffects.block.EBlockManager;
+import com.duplxey.blockeffects.util.StringManager;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -53,7 +53,7 @@ public class DefaultCommand implements CommandExecutor {
     }
 
     private void sendHelp(CommandSender sender) {
-        sender.sendMessage(P.PREFIX + CC.SPECIAL + "BlockEffects v" + version + CC.NORMAL + " coded by NickDEV.");
+        sender.sendMessage(P.PREFIX + CC.SPECIAL + "BlockEffects v" + version + CC.NORMAL + " coded by duplxey.");
         sender.sendMessage(CC.NORMAL + "To see the registered blocks use: " + CC.VALUE + "/be blocks");
     }
 }

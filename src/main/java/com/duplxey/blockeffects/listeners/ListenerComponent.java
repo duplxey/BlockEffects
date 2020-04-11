@@ -1,4 +1,4 @@
-package me.nickdev.blockeffects.listeners;
+package com.duplxey.blockeffects.listeners;
 
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;

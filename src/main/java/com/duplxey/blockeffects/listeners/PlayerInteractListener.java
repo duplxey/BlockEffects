@@ -1,10 +1,10 @@
-package me.nickdev.blockeffects.listeners;
+package com.duplxey.blockeffects.listeners;
 
-import me.nickdev.blockeffects.BlockEffects;
-import me.nickdev.blockeffects.block.EBlockManager;
-import me.nickdev.blockeffects.block.TriggerType;
-import me.nickdev.blockeffects.config.ConfigManager;
-import me.nickdev.blockeffects.util.ItemManager;
+import com.duplxey.blockeffects.BlockEffects;
+import com.duplxey.blockeffects.block.EBlockManager;
+import com.duplxey.blockeffects.block.TriggerType;
+import com.duplxey.blockeffects.config.ConfigManager;
+import com.duplxey.blockeffects.util.ItemManager;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

@@ -1,4 +1,4 @@
-package me.nickdev.blockeffects.constants;
+package com.duplxey.blockeffects.constants;
 
 /**
  * Messages used by the plugin.

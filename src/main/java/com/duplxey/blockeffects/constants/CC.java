@@ -1,4 +1,4 @@
-package me.nickdev.blockeffects.constants;
+package com.duplxey.blockeffects.constants;
 
 import org.bukkit.ChatColor;
 

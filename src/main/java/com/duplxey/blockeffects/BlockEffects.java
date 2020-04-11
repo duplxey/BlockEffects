@@ -1,9 +1,9 @@
-package me.nickdev.blockeffects;
+package com.duplxey.blockeffects;
 
-import me.nickdev.blockeffects.block.EBlockManager;
-import me.nickdev.blockeffects.commands.RegisterCommands;
-import me.nickdev.blockeffects.config.ConfigManager;
-import me.nickdev.blockeffects.listeners.RegisterListeners;
+import com.duplxey.blockeffects.block.EBlockManager;
+import com.duplxey.blockeffects.commands.RegisterCommands;
+import com.duplxey.blockeffects.config.ConfigManager;
+import com.duplxey.blockeffects.listeners.RegisterListeners;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 

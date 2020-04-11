@@ -1,4 +1,4 @@
-package me.nickdev.blockeffects.block;
+package com.duplxey.blockeffects.block;
 
 public enum TriggerType {
     WALK,

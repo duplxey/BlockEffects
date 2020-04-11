@@ -1,7 +1,7 @@
-package me.nickdev.blockeffects.commands;
+package com.duplxey.blockeffects.commands;
 
-import me.nickdev.blockeffects.BlockEffects;
-import me.nickdev.blockeffects.block.EBlockManager;
+import com.duplxey.blockeffects.BlockEffects;
+import com.duplxey.blockeffects.block.EBlockManager;
 
 public class RegisterCommands {
 

@@ -1,4 +1,4 @@
-package me.nickdev.blockeffects.util;
+package com.duplxey.blockeffects.util;
 
 import java.util.HashMap;
 

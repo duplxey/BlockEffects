@@ -1,7 +1,7 @@
-package me.nickdev.blockeffects.block;
+package com.duplxey.blockeffects.block;
 
-import me.nickdev.blockeffects.constants.CC;
-import me.nickdev.blockeffects.util.StringManager;
+import com.duplxey.blockeffects.constants.CC;
+import com.duplxey.blockeffects.util.StringManager;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
