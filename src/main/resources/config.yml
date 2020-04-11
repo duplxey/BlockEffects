@@ -22,6 +22,7 @@
 # <potion-effect> - potion effect type (http://tinyurl.com/spigot-potioneffect)
 # <potion-duration> - time in seconds
 # <potion-amplifier> - potion amplifier
+# <pass-through> - boolean that determines whether a player can pass through the block (like lava, water or cobweb)
 #
 #  <name>:
 #    material: <material>
@@ -36,6 +37,7 @@
 #      - "<command1>"
 #      - "<command2>"
 #      - "<command3>"
+#    pass-through: <true/false>
 
 # ==========================================================================
 #                              EBlocks

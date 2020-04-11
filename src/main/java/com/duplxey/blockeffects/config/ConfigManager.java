@@ -41,7 +41,8 @@ public class ConfigManager  {
                 getPotionEffect(name),
                 blockSection.getString(name + ".message"),
                 blockSection.getString(name + ".permission"),
-                blockSection.getStringList(name + ".commands"));
+                blockSection.getStringList(name + ".commands"),
+                blockSection.getBoolean(name + ".pass-through", false));
     }
 
     private PotionEffect getPotionEffect(String name) {
