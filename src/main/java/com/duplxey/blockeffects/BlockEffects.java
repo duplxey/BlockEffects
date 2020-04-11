@@ -18,14 +18,14 @@ public class BlockEffects extends JavaPlugin {
     public void onEnable() {
         instance = this;
 
-        Bukkit.getLogger().info("Preparing the configuration files.");
+        Bukkit.getLogger().info("[BlockEffects] Preparing the configuration files.");
         saveDefaultConfig();
 
         // Managers
         configManager = new ConfigManager(this);
         blockManager = new EBlockManager(this, configManager);
 
-        Bukkit.getLogger().info("Registering commands & listeners.");
+        Bukkit.getLogger().info("[BlockEffects] Registering commands & listeners.");
         new RegisterCommands(this, blockManager);
         new RegisterListeners(this, blockManager, configManager);
 
