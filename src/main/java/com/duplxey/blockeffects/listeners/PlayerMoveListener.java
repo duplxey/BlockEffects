@@ -36,13 +36,13 @@ public class PlayerMoveListener implements ListenerComponent {
 
         if (!ItemManager.isNull(currentBlock) && blockManager.isEBlock(currentBlock.getType())) {
             EBlock eBlock = blockManager.getEBlock(currentBlock.getType());
-            if (eBlock.isPassThrough()) {
-                blockManager.tryToActivate(player, currentBlock.getType(), TriggerType.WALK);
+            if (eBlock.getTriggerType() == TriggerType.WALK_INSIDE) {
+                blockManager.tryToActivate(player, currentBlock.getType(), TriggerType.WALK_INSIDE);
             }
         }
         if (!ItemManager.isNull(underBlock) && blockManager.isEBlock(underBlock.getType())) {
             EBlock eBlock = blockManager.getEBlock(underBlock.getType());
-            if (!eBlock.isPassThrough()) {
+            if (eBlock.getTriggerType() == TriggerType.WALK) {
                 blockManager.tryToActivate(player, underBlock.getType(), TriggerType.WALK);
             }
         }

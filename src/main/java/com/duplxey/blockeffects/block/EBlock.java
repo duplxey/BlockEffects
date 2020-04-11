@@ -21,9 +21,6 @@ public class EBlock  {
     private String message;
     private String permission;
     private List<String> commands;
-    // Determines whether player can pass through the block like (water, lava cobweb)
-    // If set to true, 1 block offset onPlayerMove event won't be applied.
-    private boolean passThrough;
 
     /**
      * Creates a new EBlock.
@@ -35,7 +32,7 @@ public class EBlock  {
      * @param permission  Permission
      * @param commands  List of commands
      */
-    public EBlock(String name, Material material, TriggerType triggerType, PotionEffect potionEffect, String message, String permission, List<String> commands, boolean passThrough) {
+    public EBlock(String name, Material material, TriggerType triggerType, PotionEffect potionEffect, String message, String permission, List<String> commands) {
         this.name = name;
         this.material = material;
         this.triggerType = triggerType;
@@ -43,7 +40,6 @@ public class EBlock  {
         this.message = message;
         this.permission = permission;
         this.commands = commands;
-        this.passThrough = passThrough;
     }
 
     /**
@@ -53,7 +49,7 @@ public class EBlock  {
      * @param material  Material
      */
     public EBlock(String name, Material material, TriggerType triggerType) {
-        this(name, material, triggerType, null, null, null, null, false);
+        this(name, material, triggerType, null, null, null, null);
     }
 
     /**
@@ -129,14 +125,6 @@ public class EBlock  {
         commands.remove(command);
     }
 
-    public boolean isPassThrough() {
-        return passThrough;
-    }
-
-    public void setPassThrough(boolean passThrough) {
-        this.passThrough = passThrough;
-    }
-
     /**
      * Returns the info about the EBlock.
      *
@@ -150,7 +138,6 @@ public class EBlock  {
                 CC.NORMAL + "Effect: " + CC.VALUE + (potionEffect == null ? "none" : potionEffect.getType().getName() + CC.NORMAL + " (dur: " + CC.VALUE + potionEffect.getDuration() + CC.NORMAL + ", amp: " + CC.VALUE + potionEffect.getAmplifier() + CC.NORMAL + ")"),
                 CC.NORMAL + "Message: " + CC.VALUE + (message == null ? "none" : message),
                 CC.NORMAL + "Permission: " + CC.VALUE + (permission == null ? "none" : permission),
-                CC.NORMAL + "Pass through: " + CC.VALUE + passThrough,
         };
     }
 
